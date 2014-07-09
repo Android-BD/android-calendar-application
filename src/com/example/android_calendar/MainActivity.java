@@ -1,13 +1,17 @@
 package com.example.android_calendar;
 
+//import com.example.helloworld.R;
+
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -22,7 +26,13 @@ public class MainActivity extends Activity {
                     .commit();
         }      
     }
-
+	public void startJSONActivity(View v) {
+		Toast toast = Toast.makeText(this,
+				"Opening another activity!", Toast.LENGTH_LONG);
+		toast.show();
+		Intent intent = new Intent(this, JSON_Activity.class);
+		startActivity(intent);
+	}
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         

@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.INTERNET" />
+        
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -20,6 +22,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android_calendar.JSON_Activity"
+            android:label="@string/json_main">
         </activity>
     </application>
 
