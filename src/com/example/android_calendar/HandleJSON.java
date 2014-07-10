@@ -9,50 +9,82 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 
 public class HandleJSON {
-   private String country = "county";
-   private String temperature = "temperature";
-   private String humidity = "humidity";
-   private String pressure = "pressure";
+   //private String country = "county";
+   //private String temperature = "temperature";
+   //private String humidity = "humidity";
+   //private String pressure = "pressure";
    private String urlString = null;
-   
+   int arrayLength;
+   int i=0;
    private String item0 = "temp0";
    private String item1 = "temp1";
    private String item2 = "temp2";
    private String item3 = "temp3";
-
+   private String _item0, _item1, _item2, _item3;
+   private String items[], _temp[];
+   
+   
    public volatile boolean parsingComplete = true;
    public HandleJSON(String url){
       this.urlString = url;
    }
    public String getCountry(){
-      return item0;
+      return _item0;
    }
    public String getTemperature(){
-      return item1;
+      return _item1;
    }
    public String getHumidity(){
-      return item2;
+      return _item2;
    }
    public String getPressure(){
       //return pressure;
-	   return item3;
+	   return _item3;
    }
-
+   public String[] getArray(){
+	   return items;
+   }
    @SuppressLint("NewApi")
    public void readAndParseJSON(String in) {
       try {
     	  //feed, entry, title, $t : textForReturnString
     	  JSONObject parentObject = new JSONObject(in);
           JSONObject feed = parentObject.getJSONObject("feed");
-    	  //temp = feed.getString("entry");
+    	  //_temp = feed.getString("entry");
           JSONArray entry = feed.getJSONArray("entry");
+          
+          /*arrayLength = entry.length();
+          do {
+        	  _temp[i] = entry.getString(i);
+        	  JSONObject _json = new JSONObject(_temp[i]);
+        	  JSONObject title = _json.getJSONObject("title");
+        	  items[i] = title.getString("$t");        	     	  
+        	  i++;} while (i < arrayLength); */ 
+        	  
           item0 = entry.getString(0);
           item1 = entry.getString(1);
           item2 = entry.getString(2);
           item3 = entry.getString(3);
+          JSONObject json0 = new JSONObject(item0);
+          JSONObject title0 = json0.getJSONObject("title");
+           _item0 = title0.getString("$t");
+           
+           JSONObject json1 = new JSONObject(item1);
+           JSONObject title1 = json1.getJSONObject("title");
+            _item1 = title1.getString("$t");
+            
+            JSONObject json2 = new JSONObject(item2);
+            JSONObject title2 = json2.getJSONObject("title");
+             _item2 = title2.getString("$t");
+             
+             JSONObject json3 = new JSONObject(item3);
+             JSONObject title3 = json3.getJSONObject("title");
+              _item3 = title3.getString("$t");
+          
+              
           //JSONObject entry = feed.getJSONObject("entry");
     	  //JSONObject title = entry.getJSONObject("title");
-    	  //temp = title.getString("$t");
+    	  //_temp = title.getString("$t");
     	  
     	  
     	  

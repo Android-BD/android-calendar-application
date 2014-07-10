@@ -13,7 +13,9 @@ public class JSON_Activity extends Activity{
 	//private EditText location,country,temperature,humidity,pressure;
 	private EditText temp0, temp1, temp2, temp3;
    	private HandleJSON obj;
-	
+   	private String items[];
+   	int arrayLength;
+   	int i=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +43,13 @@ public class JSON_Activity extends Activity{
         temp1.setText(obj.getTemperature());
         temp2.setText(obj.getHumidity());
         temp3.setText(obj.getPressure());
-
+        
+        /*items = obj.getArray();
+        arrayLength = items.length;
+        do {
+        	String _temp = "temp" + i;
+        	_temp.setText(items[i]);
+        	i++;
+        } while (i < arrayLength);*/ 
     }
 }
