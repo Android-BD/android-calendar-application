@@ -1,18 +1,10 @@
 package com.example.android_calendar;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.annotation.SuppressLint;
 
@@ -22,48 +14,65 @@ public class HandleJSON {
    private String humidity = "humidity";
    private String pressure = "pressure";
    private String urlString = null;
+   
+   private String item0 = "temp0";
+   private String item1 = "temp1";
+   private String item2 = "temp2";
+   private String item3 = "temp3";
 
    public volatile boolean parsingComplete = true;
    public HandleJSON(String url){
       this.urlString = url;
    }
    public String getCountry(){
-      return country;
+      return item0;
    }
    public String getTemperature(){
-      return temperature;
+      return item1;
    }
    public String getHumidity(){
-      return humidity;
+      return item2;
    }
    public String getPressure(){
-      return pressure;
+      //return pressure;
+	   return item3;
    }
 
    @SuppressLint("NewApi")
    public void readAndParseJSON(String in) {
       try {
-         JSONObject reader = new JSONObject(in);
-
+    	  //feed, entry, title, $t : textForReturnString
+    	  JSONObject parentObject = new JSONObject(in);
+          JSONObject feed = parentObject.getJSONObject("feed");
+    	  //temp = feed.getString("entry");
+          JSONArray entry = feed.getJSONArray("entry");
+          item0 = entry.getString(0);
+          item1 = entry.getString(1);
+          item2 = entry.getString(2);
+          item3 = entry.getString(3);
+          //JSONObject entry = feed.getJSONObject("entry");
+    	  //JSONObject title = entry.getJSONObject("title");
+    	  //temp = title.getString("$t");
+    	  
+    	  
+    	  
+    	  
+    	/* JSONObject reader = new JSONObject(in);
          JSONObject sys  = reader.getJSONObject("sys");
          country = sys.getString("country");
-
          JSONObject main  = reader.getJSONObject("main");
          temperature = main.getString("temp");
-
          pressure = main.getString("pressure");
-         humidity = main.getString("humidity");
+         humidity = main.getString("humidity"); */
 
          parsingComplete = false;
-
-
 
         } catch (Exception e) {
            // TODO Auto-generated catch block
            e.printStackTrace();
         }
-
    }
+   
    public void fetchJSON(){
       Thread thread = new Thread(new Runnable(){
          @Override
