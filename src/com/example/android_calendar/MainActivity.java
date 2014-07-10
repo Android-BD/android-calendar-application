@@ -33,6 +33,14 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, JSON_Activity.class);
 		startActivity(intent);
 	}
+	
+	public void startListView(View v){
+		Toast toast = Toast.makeText(this, "Opening another activity!", Toast.LENGTH_LONG);
+		toast.show();
+		Intent listIntent = new Intent(this,CalendarListView.class);
+		startActivity(listIntent);
+	}
+	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         

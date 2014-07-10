@@ -17,4 +17,12 @@
         android:onClick="startJSONActivity"
         android:text="Test JSON" />
 
+    <Button
+        android:id="@+id/listViewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:text="View ListView" />
+
 </RelativeLayout>
