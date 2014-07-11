@@ -31,6 +31,9 @@
            android:name="com.example.android_calendar.CalendarListView"            
             >
             </activity>
+            <activity 
+                android:name="com.example.android_calendar.CalendarGridView">               
+            </activity>
     </application>
 
 </manifest>
