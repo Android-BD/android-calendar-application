@@ -12,8 +12,6 @@
         android:id="@+id/jsonButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
         android:onClick="startJSONActivity"
         android:text="Test JSON" />
 
@@ -35,5 +33,14 @@
         android:onClick="startGridView"
         android:layout_marginTop="66dp"
         android:text="Show Grid" />
+
+        <Button
+            android:id="@+id/readButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/button1"
+            android:layout_alignRight="@+id/listViewButton"
+            android:onClick="startReadSharedPref"
+            android:text="Shared Pref" />
 
 </RelativeLayout>

@@ -34,6 +34,11 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	public void startReadSharedPref(View v) {
+		Intent intent = new Intent(this, readSharedPref.class);
+		startActivity(intent);
+	}
+	
 	public void startListView(View v){
 		Toast toast = Toast.makeText(this, "Opening another activity!", Toast.LENGTH_LONG);
 		toast.show();

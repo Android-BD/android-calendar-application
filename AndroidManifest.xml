@@ -35,6 +35,9 @@
             <activity 
                 android:name="com.example.android_calendar.CalendarGridView">               
             </activity>
+            <activity
+                android:name="com.example.android_calendar.readSharedPref">               
+            </activity>
     </application>
 
 </manifest>

@@ -42,12 +42,18 @@ public class JSON_Activity extends Activity{
         while(obj.parsingComplete);
         
         splitItems = obj.getArray();
-
+        arrayLength = splitItems.length;
+        
         temp0.setText(splitItems[0][0]);
         temp1.setText(splitItems[1][1]);
         temp2.setText(splitItems[2][2]);
         
         //Saving a shared preference key
+        do {
+        	dataStore += splitItems[i][0] + "#" + splitItems[i][1] + "#" + splitItems[i][2] + ":";
+        	i++;
+        } while (i < arrayLength);
+        
         SharedPreferences sp = getSharedPreferences(filename, MODE_PRIVATE);
         SharedPreferences.Editor spe = sp.edit();
         spe.putString("calData", dataStore);
