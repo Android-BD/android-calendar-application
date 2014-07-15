@@ -7,42 +7,29 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.widget.Toast;
 
 public class HandleJSON {
-   //private String country = "county";
-   //private String temperature = "temperature";
-   //private String humidity = "humidity";
-   //private String pressure = "pressure";
    private String urlString = null;
    int arrayLength;
    int i=0;
-   private String item0 = "temp0";
-   private String item1 = "temp1";
-   private String item2 = "temp2";
-   private String item3 = "temp3";
-   private String _item0, _item1, _item2, _item3;
-   private String items[], _temp[];
    
-   
+   String[] items = { "Day 1", "Day 2","Day 3", "Day 4" },
+		    parts = { "0.", "1.", "2."};
+   String[][] splitItems =	{{ "1", "2","3" },
+							   { "1", "2","3" },
+							   { "1", "2","3" },
+							   { "1", "2","3" },
+   					  		};
+   String[] _temp = { "Day 5", "Day 6", "Day 7", "Day 8" };
+      
    public volatile boolean parsingComplete = true;
    public HandleJSON(String url){
       this.urlString = url;
    }
-   public String getCountry(){
-      return _item0;
-   }
-   public String getTemperature(){
-      return _item1;
-   }
-   public String getHumidity(){
-      return _item2;
-   }
-   public String getPressure(){
-      //return pressure;
-	   return _item3;
-   }
-   public String[] getArray(){
-	   return items;
+
+   public String[][] getArray(){
+	   return splitItems;
    }
    @SuppressLint("NewApi")
    public void readAndParseJSON(String in) {
@@ -53,50 +40,21 @@ public class HandleJSON {
     	  //_temp = feed.getString("entry");
           JSONArray entry = feed.getJSONArray("entry");
           
-          /*arrayLength = entry.length();
+          arrayLength = entry.length();
           do {
         	  _temp[i] = entry.getString(i);
         	  JSONObject _json = new JSONObject(_temp[i]);
         	  JSONObject title = _json.getJSONObject("title");
-        	  items[i] = title.getString("$t");        	     	  
-        	  i++;} while (i < arrayLength); */ 
+        	  items[i] = title.getString("$t");   
         	  
-          item0 = entry.getString(0);
-          item1 = entry.getString(1);
-          item2 = entry.getString(2);
-          item3 = entry.getString(3);
-          JSONObject json0 = new JSONObject(item0);
-          JSONObject title0 = json0.getJSONObject("title");
-           _item0 = title0.getString("$t");
-           
-           JSONObject json1 = new JSONObject(item1);
-           JSONObject title1 = json1.getJSONObject("title");
-            _item1 = title1.getString("$t");
-            
-            JSONObject json2 = new JSONObject(item2);
-            JSONObject title2 = json2.getJSONObject("title");
-             _item2 = title2.getString("$t");
-             
-             JSONObject json3 = new JSONObject(item3);
-             JSONObject title3 = json3.getJSONObject("title");
-              _item3 = title3.getString("$t");
-          
-              
-          //JSONObject entry = feed.getJSONObject("entry");
-    	  //JSONObject title = entry.getJSONObject("title");
-    	  //_temp = title.getString("$t");
-    	  
-    	  
-    	  
-    	  
-    	/* JSONObject reader = new JSONObject(in);
-         JSONObject sys  = reader.getJSONObject("sys");
-         country = sys.getString("country");
-         JSONObject main  = reader.getJSONObject("main");
-         temperature = main.getString("temp");
-         pressure = main.getString("pressure");
-         humidity = main.getString("humidity"); */
-
+              String[] parts = items[i].split("\\.");
+              //[menuOfTheDay][item#]
+              //parts[0] is just the #1
+              splitItems[i][0] = parts[1];
+              splitItems[i][1] = parts[2];
+              splitItems[i][2] = parts[3];
+        	  i++;} while (i < arrayLength);
+                                           	 
          parsingComplete = false;
 
         } catch (Exception e) {
