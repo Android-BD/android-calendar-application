@@ -1,4 +1,5 @@
 package com.example.android_calendar;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -7,22 +8,24 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
-import android.widget.Toast;
+import android.content.SharedPreferences;
 
-public class HandleJSON {
+public class HandleJSON extends JSON_Activity {
    private String urlString = null;
    int arrayLength;
    int i=0;
    
    String[] items = { "Day 1", "Day 2","Day 3", "Day 4" },
 		    parts = { "0.", "1.", "2."};
-   String[][] splitItems =	{{ "1", "2","3" },
+   String[][] splitItems =	{  { "1", "2","3" },
 							   { "1", "2","3" },
 							   { "1", "2","3" },
 							   { "1", "2","3" },
    					  		};
    String[] _temp = { "Day 5", "Day 6", "Day 7", "Day 8" };
-      
+   String filename = "wsuCalendarApp.txt";
+   String dataStore = "";
+   FileOutputStream outputStream;  
    public volatile boolean parsingComplete = true;
    public HandleJSON(String url){
       this.urlString = url;
@@ -53,8 +56,39 @@ public class HandleJSON {
               splitItems[i][0] = parts[1];
               splitItems[i][1] = parts[2];
               splitItems[i][2] = parts[3];
+              dataStore += splitItems[i][0] + "#" + splitItems[i][1] + "#" + splitItems[i][1] + ":";
         	  i++;} while (i < arrayLength);
-                                           	 
+          
+         //Shared Preference saved
+          /*SharedPreferences sp = getSharedPreferences(filename, MODE_PRIVATE);
+          SharedPreferences.Editor spe = sp.edit();
+          spe.putString("calData", dataStore);
+          spe.commit();*/
+          
+          /*  Save to internal storage file
+          try {
+            outputStream = openFileOutput(filename, MODE_PRIVATE);
+            //splitItems[i][2] = outputStream.getFileStreamPath("wsuCaledarApp.txt");
+            outputStream.write(dataStore.getBytes());
+            outputStream.close();
+          } catch (Exception e) {
+            e.printStackTrace();
+          }*/
+          
+         //FileOutputStream fOut = openFileOutput("wsuCalendarApp");//,MODE_WORLD_READABLE);
+         // String str = "data";
+         // fOut.write(str.getBytes());
+         // fOut.close();
+          
+         //Read A File
+         /* FileInputStream fin = openFileInput(file);
+          int c;
+          String temp="";
+          while( (c = fin.read()) != -1){
+             temp = temp + Character.toString((char)c);
+          }
+          //string temp contains all the data of the file.
+          fin.close();*/
          parsingComplete = false;
 
         } catch (Exception e) {

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class ImageAdapter extends BaseAdapter{
 	private Context context;
-	private Integer[] imageIds = {R.drawable.rect2985};
+//	private Integer[] imageIds = {R.drawable.rect2985};
 	
 	public ImageAdapter(Context context){
 		this.context=context;
@@ -18,7 +18,8 @@ public class ImageAdapter extends BaseAdapter{
 
 	@Override
 	public int getCount() {
-		return imageIds.length;
+	//	return imageIds.length;
+		return 1;
 	}
 
 	@Override
@@ -45,7 +46,7 @@ public class ImageAdapter extends BaseAdapter{
 			imageView = (ImageView) convertView;
 		}
 		
-		imageView.setImageResource(imageIds[position]);
+	//	imageView.setImageResource(imageIds[position]);
 		return imageView;
 	}
 
