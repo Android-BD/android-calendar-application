@@ -41,6 +41,13 @@ public class MainActivity extends Activity {
 		startActivity(listIntent);
 	}
 	
+	public void startGridView(View v){
+		Toast toast = Toast.makeText(this,  "Opening another activity!", Toast.LENGTH_SHORT);
+		toast.show();
+//		Intent gridIntent = new Intent(this,CalendarGridView.class);
+	//	startActivity(gridIntent);
+	}
+	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
