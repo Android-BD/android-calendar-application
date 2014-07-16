@@ -5,6 +5,7 @@ package com.example.android_calendar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
