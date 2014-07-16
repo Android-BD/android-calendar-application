@@ -14,13 +14,13 @@ public class HandleJSON extends JSON_Activity {
    private String urlString = null;
    int arrayLength;
    int i=0;
-   
+   String calDate;
    String[] items = { "Day 1", "Day 2","Day 3", "Day 4" },
 		    parts = { "0.", "1.", "2."};
-   String[][] splitItems =	{  { "1", "2","3" },
-							   { "1", "2","3" },
-							   { "1", "2","3" },
-							   { "1", "2","3" },
+   String[][] splitItems =	{  { "1", "2","3", "4" },
+							   { "1", "2","3", "4" },
+							   { "1", "2","3", "4" },
+							   { "1", "2","3", "4" },
    					  		};
    String[] _temp = { "Day 5", "Day 6", "Day 7", "Day 8" };
    String filename = "wsuCalendarApp.txt";
@@ -50,12 +50,19 @@ public class HandleJSON extends JSON_Activity {
         	  JSONObject title = _json.getJSONObject("title");
         	  items[i] = title.getString("$t");   
         	  
+              //gd$when[0],startTime : 2014-07-16
+        	  JSONArray whenArr = _json.getJSONArray("gd$when"); 
+        	  String tempDate = whenArr.getString(0);
+        	  JSONObject whenObj = new JSONObject(tempDate); 
+        	  calDate = whenObj.getString("startTime");
+        	  
               String[] parts = items[i].split("\\.");
               //[menuOfTheDay][item#]
               //parts[0] is just the #1
-              splitItems[i][0] = parts[1];
-              splitItems[i][1] = parts[2];
-              splitItems[i][2] = parts[3];
+              splitItems[i][0] = calDate;
+              splitItems[i][1] = parts[1];
+              splitItems[i][2] = parts[2];
+              splitItems[i][3] = parts[3];
               dataStore += splitItems[i][0] + "#" + splitItems[i][1] + "#" + splitItems[i][1] + ":";
         	  i++;} while (i < arrayLength);
           
