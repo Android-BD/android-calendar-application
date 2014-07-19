@@ -19,8 +19,8 @@ public class HandleJSON extends JSON_Activity {
 		    parts = { "0.", "1.", "2."};
    String[][] splitItems =	{  { "1", "2","3", "4" },
 							   { "1", "2","3", "4" },
-							   { "1", "2","3", "4" },
-							   { "1", "2","3", "4" },
+							   { "1", "2","333", "4" },
+							   { "", "","", "" },
    					  		};
    String[] _temp = { "Day 5", "Day 6", "Day 7", "Day 8" };
    String filename = "wsuCalendarApp.txt";
