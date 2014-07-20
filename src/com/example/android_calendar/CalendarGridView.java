@@ -71,18 +71,15 @@ public class CalendarGridView extends Activity{
 			datesForMenu[j]=date[i];
 			j++;
 		}
-//		
-//
-		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,newDateList);
-
 		
 
-		
+		//Creating Adapter
 		gridview.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id){
 				//TextView currentDay = (TextView) v.findViewById(R.id.);
 				//gridview.getChildAt(day).setBackgroundColor(Color.RED);
 				Intent listsIntent = new Intent(getApplicationContext(),CalendarListView.class);
+				listsIntent.putExtra("position",position);
 				startActivity(listsIntent);
 				Toast.makeText(CalendarGridView.this, "" + position, Toast.LENGTH_SHORT).show();
 			}
