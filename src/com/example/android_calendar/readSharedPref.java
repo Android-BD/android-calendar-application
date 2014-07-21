@@ -49,11 +49,6 @@ public class readSharedPref extends Activity {
     		Intent gridIntent = new Intent(this,CalendarGridView.class);
     		startActivity(gridIntent);
     		return true;
-    	case R.id.listOption:
-    		//do something
-    		Intent listIntent = new Intent(this,CalendarListView.class);
-    		startActivity(listIntent);
-    		return true;
     	case R.id.updateOption:
     		//do something
     		Intent intent = new Intent(this, JSON_Activity.class);

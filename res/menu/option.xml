@@ -2,8 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item android:id="@+id/calendarOption"
     	android:title="Calendar View" />
-	<item android:id="@+id/listOption"
-    	android:title="List View" />
 	<item android:id="@+id/updateOption"
 	    android:title="Update Data" />
 	<item android:id="@+id/dataOption"

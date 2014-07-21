@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
                     .commit();
         }      
     }
-	public void startJSONActivity(View v) {
+	/*public void startJSONActivity(View v) {
 		Intent intent = new Intent(this, JSON_Activity.class);
 		startActivity(intent);
 	}
@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 	public void startReadSharedPref(View v) {
 		Intent intent = new Intent(this, readSharedPref.class);
 		startActivity(intent);
-	}
+	}*/
 	
 	public void startListView(View v){
 		Toast toast = Toast.makeText(this, "Opening another activity!", Toast.LENGTH_LONG);
@@ -74,10 +74,6 @@ public class MainActivity extends Activity {
     	case R.id.calendarOption:
     		Intent gridIntent = new Intent(this,CalendarGridView.class);
     		startActivity(gridIntent);
-    		return true;
-    	case R.id.listOption:
-    		Intent listIntent = new Intent(this,CalendarListView.class);
-    		startActivity(listIntent);
     		return true;
     	case R.id.updateOption:
     		Intent intent = new Intent(this, JSON_Activity.class);

@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -57,7 +60,7 @@ public class CalendarGridView extends Activity{
 //		
 //		//Set the grid view up
 		GridView gridview = (GridView) findViewById(R.id.calendargrid);
-//		gridview.setAdapter(new CalendarAdapter(this));
+		gridview.setAdapter(new CalendarAdapter(this));
 //		gridview.setBackgroundColor(0x30FF0000);
 //		
 //
@@ -93,4 +96,41 @@ public class CalendarGridView extends Activity{
 		return totalDays[a];
 	}
 
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option, menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        /*int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }*/
+    	switch (item.getItemId()) {
+    	case R.id.calendarOption:
+    		Intent gridIntent = new Intent(this,CalendarGridView.class);
+    		startActivity(gridIntent);
+    		return true;
+    	case R.id.updateOption:
+    		Intent intent = new Intent(this, JSON_Activity.class);
+    		startActivity(intent);
+    		return true;
+    	case R.id.dataOption:
+    		Intent dataIntent = new Intent(this, readSharedPref.class);
+    		startActivity(dataIntent);
+    		return true;
+		default:
+			return super.onOptionsItemSelected(item);
+
+    	}
+    }
 }
