@@ -5,20 +5,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,9 +77,9 @@ public class CalendarGridView extends Activity{
 				//TextView currentDay = (TextView) v.findViewById(R.id.);
 				//gridview.getChildAt(day).setBackgroundColor(Color.RED);
 				Intent listsIntent = new Intent(getApplicationContext(),CalendarListView.class);
-				listsIntent.putExtra("position",position);
+				listsIntent.putExtra("position",position+1);
 				startActivity(listsIntent);
-				Toast.makeText(CalendarGridView.this, "" + position, Toast.LENGTH_SHORT).show();
+				Toast.makeText(CalendarGridView.this, "" + (position+1), Toast.LENGTH_SHORT).show();
 			}
 		});
 		

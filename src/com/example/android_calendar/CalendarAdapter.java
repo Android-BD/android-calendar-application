@@ -46,8 +46,11 @@ public class CalendarAdapter extends BaseAdapter{
 		dayCount = daysOfMonth(month);		
 		
 		//This for loop will populate the array with the correct number of days to show
-		for(i=1;i<dayCount+1;i++){
-			calendarDays[i]=i;
+		for(i=0;i<dayCount;i++){
+			calendarDays[i]=i+1;
+			if(calendarDays[i]==32){
+				break;
+			}
 			newDateList.add(Integer.toString(calendarDays[i]));
 		}
 		
@@ -61,10 +64,10 @@ public class CalendarAdapter extends BaseAdapter{
 		//Completed for loop that gets the dates that are needed to be shown as food.
 		for(i=2;i<arrayLength;i=i+5){
 			datesForMenu[j]=date[i];
-			k=j-1;
+			//k=Integer.parseInt(datesForMenu[j-1]);
 				if(datesForMenu[j].length() < 3){
-					daysList.add(Integer.parseInt(datesForMenu[j]));
-				}				
+				daysList.add(Integer.parseInt(datesForMenu[j]));
+			}				
 			j++;
 		}//End for
 		
@@ -72,7 +75,7 @@ public class CalendarAdapter extends BaseAdapter{
 		//Month being chosen. 
 		for(i=1;i<arrayLength;i=i+5){
 			datesForMenu[j]=date[i];			
-			if(datesForMenu[j].length() < 3 && Integer.parseInt(datesForMenu[j])==currMonth){
+			if(Integer.parseInt(datesForMenu[j])==currMonth){
 				monthList.add(Integer.parseInt(datesForMenu[j]));
 			}
 		}
@@ -81,7 +84,7 @@ public class CalendarAdapter extends BaseAdapter{
 
 	@Override
 	public int getCount() {
-		return dayCount + 1;
+		return dayCount;
 	}
 
 	@Override

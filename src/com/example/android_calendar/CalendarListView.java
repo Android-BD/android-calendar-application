@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -60,8 +65,28 @@ public class CalendarListView extends Activity{
 
          ListView mylist = (ListView) findViewById(R.id.mainlist);
          mylist.setAdapter(adapter);
+         mylist.setOnItemClickListener(new OnItemClickListener(){        	 
+          	public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+        		
+        		AlertDialog.Builder alertDialog = new AlertDialog.Builder(CalendarListView.this);
+        			alertDialog.setTitle("");
+        			alertDialog.setMessage("Choose " + parent.getItemAtPosition(position) + " as favorite?");
+        			alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+        				public void onClick(DialogInterface dialog, int id){
+        					//Do stuff
+        				}
+        			});
+        			alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener(){
+        				public void onClick(DialogInterface dialog, int id){
+        					dialog.cancel();
+        				}
+        			});
+        			alertDialog.show();
+        	}         	 
+         });    	
  }
 	
+
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
