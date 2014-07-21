@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.android_calendar.MainActivity"
+            android:name="com.example.android_calendar.CalendarGridView"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,9 +32,7 @@
            android:name="com.example.android_calendar.CalendarListView"            
             >
             </activity>
-            <activity 
-                android:name="com.example.android_calendar.CalendarGridView">               
-            </activity>
+
             <activity
                 android:name="com.example.android_calendar.readSharedPref">               
             </activity>
