@@ -57,7 +57,7 @@ public class CalendarGridView extends Activity{
 //		
 //		//Set the grid view up
 		GridView gridview = (GridView) findViewById(R.id.calendargrid);
-		gridview.setAdapter(new CalendarAdapter(this));
+//		gridview.setAdapter(new CalendarAdapter(this));
 //		gridview.setBackgroundColor(0x30FF0000);
 //		
 //
