@@ -25,7 +25,7 @@ public class readSharedPref extends Activity {
 	public void onClickLoad(View view)
 	{
         SharedPreferences sp = getSharedPreferences(filename, MODE_PRIVATE);
-		String savedString = sp.getString("calData", null);
+		String savedString = sp.getString("favItem", null);
 		temp0.setText(savedString);
 	}
 	@Override

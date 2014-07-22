@@ -27,7 +27,7 @@ import android.widget.ListView;
 public class CalendarListView extends Activity{
 	String filename = "wsuCalendarApp.txt";
 	public String delims = "[-#:]+";
-	public String temp = "testing me!!....................................................................................";
+	//public String temp = "testing me!!....................................................................................";
     
 	int i,j = 0;
 	List<String> menuChoices = new ArrayList<String>();
@@ -78,7 +78,7 @@ public class CalendarListView extends Activity{
         					//Do stuff
         			        SharedPreferences sp = getSharedPreferences(filename, MODE_PRIVATE);
         			        SharedPreferences.Editor spe = sp.edit();
-        			        //String temp = parent.getItemAtPosition(position).toString();
+        			        String temp = parent.getItemAtPosition(position).toString();
         			        spe.putString("favItem", temp);
         			        spe.commit();
         				}
