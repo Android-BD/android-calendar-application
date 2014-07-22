@@ -27,6 +27,8 @@ import android.widget.ListView;
 public class CalendarListView extends Activity{
 	String filename = "wsuCalendarApp.txt";
 	public String delims = "[-#:]+";
+	public String temp = "testing me!!....................................................................................";
+    
 	int i,j = 0;
 	List<String> menuChoices = new ArrayList<String>();
 	
@@ -66,7 +68,7 @@ public class CalendarListView extends Activity{
          ListView mylist = (ListView) findViewById(R.id.mainlist);
          mylist.setAdapter(adapter);
          mylist.setOnItemClickListener(new OnItemClickListener(){        	 
-          	public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+          	public void onItemClick(final AdapterView<?> parent, View view, final int position, long id){
         		
         		AlertDialog.Builder alertDialog = new AlertDialog.Builder(CalendarListView.this);
         			alertDialog.setTitle("");
@@ -74,6 +76,11 @@ public class CalendarListView extends Activity{
         			alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
         				public void onClick(DialogInterface dialog, int id){
         					//Do stuff
+        			        SharedPreferences sp = getSharedPreferences(filename, MODE_PRIVATE);
+        			        SharedPreferences.Editor spe = sp.edit();
+        			        //String temp = parent.getItemAtPosition(position).toString();
+        			        spe.putString("favItem", temp);
+        			        spe.commit();
         				}
         			});
         			alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener(){
