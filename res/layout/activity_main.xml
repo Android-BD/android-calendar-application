@@ -4,5 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android_calendar.MainActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:text="Lunch Calendar Application"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:text="Select Activity from the Options Menu"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</FrameLayout>
 
