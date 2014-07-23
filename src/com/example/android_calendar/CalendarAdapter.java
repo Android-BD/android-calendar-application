@@ -8,6 +8,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -36,7 +37,11 @@ public class CalendarAdapter extends BaseAdapter{
 	public String delims = "[-#]+";
 	public String[] date;
 	List<Integer> daysList = new ArrayList<Integer>();
+	List<Integer> dayArray = new ArrayList<Integer>();
 	List<Integer> monthList = new ArrayList<Integer>();
+	List<String> favSave = new ArrayList<String>();
+	String favoriteFoods;
+	String theCurrMonth = "0"+currMonth;
 
 	
 	public CalendarAdapter(Context c){
@@ -57,6 +62,12 @@ public class CalendarAdapter extends BaseAdapter{
 		//Get the shared preferences
 		SharedPreferences sp = mContext.getSharedPreferences(filename, 0);
 		String savedString = sp.getString("calData", null);
+		
+		//Get the preference for the favorite food.
+		SharedPreferences favFood = mContext.getSharedPreferences(filename, 0);
+		String favoriteFood = favFood.getString("favItem", null);
+		favoriteFoods = favoriteFood;
+		
 		date = savedString.split(delims);
 		arrayLength=date.length;
 		String[] datesForMenu = new String[arrayLength];
@@ -71,6 +82,7 @@ public class CalendarAdapter extends BaseAdapter{
 			j++;
 		}//End for
 		
+	
 		//A non-working for loop that is supposed to only highlight certain days based off the correct
 		//Month being chosen. 
 		for(i=1;i<arrayLength;i=i+5){
@@ -80,6 +92,16 @@ public class CalendarAdapter extends BaseAdapter{
 			}
 		}
 		
+		for(i=0;i<monthList.size();i++){
+			if(monthList.get(i)==currMonth){
+				dayArray.add(daysList.get(i));
+			}
+		}
+		
+		for(i=0;i<arrayLength;i++){
+			favSave.add(date[i]);
+		}	
+	
 	}
 
 	@Override
@@ -112,8 +134,13 @@ public class CalendarAdapter extends BaseAdapter{
 			theDay.setTextColor(Color.MAGENTA);
 			
 			//If statement for the calendar to show days that have food in them 
-			if(daysList.contains(calendarDays[position]))
+			if(dayArray.contains(calendarDays[position])){
 			theDay.setTextColor(Color.RED);
+			
+			if(favSave.contains(favoriteFoods)){
+			theDay.setTextColor(Color.GREEN);
+			}}
+
 
 		}
 		else{
