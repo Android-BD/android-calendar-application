@@ -5,6 +5,6 @@
 	<item android:id="@+id/updateOption"
 	    android:title="Update Data" />
 	<item android:id="@+id/dataOption"
-	    android:title="View Raw Data" />
+	    android:title="View Favorite" />
 </menu>
 

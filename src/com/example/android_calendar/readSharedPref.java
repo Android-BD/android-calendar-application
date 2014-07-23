@@ -19,7 +19,9 @@ public class readSharedPref extends Activity {
 		setContentView(R.layout.sharedpref_layout);
 
         temp0 = (EditText)findViewById(R.id.editText1);
-
+        SharedPreferences sp = getSharedPreferences(filename, MODE_PRIVATE);
+		String savedString = sp.getString("favItem", null);
+		temp0.setText(savedString);
 	}
 	
 	public void onClickLoad(View view)
